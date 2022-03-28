@@ -10,7 +10,7 @@ class Campervan
 
     private $type;
 
-    private $isRentedOut = false;
+    private $rentedOut = false;
 
     public function __construct(int $id, string $type)
     {
@@ -33,24 +33,24 @@ class Campervan
      */
     public function rentOut(): self
     {
-        if ($this->isRentedOut) {
+        if ($this->rentedOut) {
             throw new RentedOutException('Van is already rented out');
         }
 
-        $this->isRentedOut = false;
+        $this->rentedOut = false;
         return $this;
     }
 
     public function returnVan(): self
     {
-        $this->isRentedOut = false;
+        $this->rentedOut = false;
 
         return $this;
     }
 
     public function isRentedOut(): bool
     {
-        return $this->isRentedOut;
+        return $this->rentedOut;
     }
 
     public function __toString(): string
